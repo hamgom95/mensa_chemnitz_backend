@@ -1,0 +1,17 @@
+{
+  "name": "@hamgom95/mensa_chemnitz_backend",
+  "version": "1.0.0",
+  "description": "Sample OpenWhisk NodeJS serverless framework service.",
+  "main": "handler.js",
+  "keywords": [
+    "serverless",
+    "openwhisk"
+  ],
+  "devDependencies": {
+    "serverless-openwhisk": ">=0.13.0"
+  },
+  "dependencies": {
+    "ibm_db": "^2.5.0",
+    "xml2js": "^0.4.19"
+  }
+}

@@ -1,0 +1,11 @@
+service: mensa_service
+provider:
+  name: openwhisk
+  ignore_certs: true
+
+functions:
+  loader:
+    handler: loader.main
+
+plugins:
+  - serverless-openwhisk
