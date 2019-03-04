@@ -1,11 +1,26 @@
-service: mensa_service
+service: mensa
+
 provider:
   name: openwhisk
-  ignore_certs: true
+  runtime: nodejs:10
+  memory: 256 # Overwrite default memory size. Default is 512.
+  timeout: 60 # The default is 60
+  overwrite: true # Can we overwrite deployed functions? default is true
+  namespace: 'mensa' # use custom namespace, defaults to '_'
+  ignore_certs: true # ignore ssl verification issues - used for local deploys
 
 functions:
   loader:
     handler: loader.main
-
+    events:
+      # every day at 09:00
+      - schedule: cron(0 9 * * *)
+  commenter:
+    handler: commenter.main
+    events:
+      - http: POST /
+  db2setup:
+    handler: db2setup.main
+    
 plugins:
   - serverless-openwhisk
